@@ -1,4 +1,4 @@
-package com.example.mdthomeassignment.ui.auth.network
+package com.example.mdthomeassignment.data.network
 
 import com.example.mdthomeassignment.BuildConfig
 import okhttp3.OkHttpClient

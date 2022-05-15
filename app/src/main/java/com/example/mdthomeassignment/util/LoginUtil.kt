@@ -1,4 +1,4 @@
-package com.example.mdthomeassignment.ui.auth.util
+package com.example.mdthomeassignment.util
 
 object LoginUtil {
 

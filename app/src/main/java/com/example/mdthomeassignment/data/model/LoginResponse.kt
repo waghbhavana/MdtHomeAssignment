@@ -1,4 +1,4 @@
-package com.example.mdthomeassignment.ui.auth.model
+package com.example.mdthomeassignment.data.model
 
 data class LoginResponse(
     val accountNo: String,

@@ -1,5 +1,6 @@
 package com.example.mdthomeassignment.ui.auth.util
 
+import com.example.mdthomeassignment.util.RegistrationUtil
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 

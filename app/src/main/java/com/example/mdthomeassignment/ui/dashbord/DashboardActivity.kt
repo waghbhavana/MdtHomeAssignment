@@ -1,12 +1,12 @@
-package com.example.mdthomeassignment.ui.auth.auth
+package com.example.mdthomeassignment.ui.dashbord
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import com.example.mdthomeassignment.R
 
-class AuthActivity : AppCompatActivity() {
+class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
+        setContentView(R.layout.activity_dashboard)
     }
 }

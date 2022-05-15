@@ -1,4 +1,4 @@
-package com.example.mdthomeassignment.ui.auth.network
+package com.example.mdthomeassignment.data.network
 
 import okhttp3.ResponseBody
 
