@@ -35,6 +35,7 @@ android {
     namespace 'com.example.mdthomeassignment'
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
 }
 
@@ -67,6 +68,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
 
     implementation "androidx.fragment:fragment-ktx:1.4.1"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
 
 
 

@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.mdthomeassignment.ui.auth.LoginFragment"
+        android:name="com.example.mdthomeassignment.ui.auth.auth.LoginFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_login" />
 

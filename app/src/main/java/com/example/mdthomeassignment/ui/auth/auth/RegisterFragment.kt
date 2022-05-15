@@ -1,4 +1,4 @@
-package com.example.mdthomeassignment.ui.auth
+package com.example.mdthomeassignment.ui.auth.auth
 
 import android.os.Bundle
 import android.view.LayoutInflater
