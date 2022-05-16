@@ -75,6 +75,7 @@
         android:ems="10"
         android:autofillHints="password"
         android:inputType="textPassword"
+        android:hint="@string/password"
         android:padding="@dimen/widget_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -88,7 +89,7 @@
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        style="@style/ButtonPrimary"
         android:layout_marginBottom="@dimen/widget_margin"
         android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -98,6 +99,7 @@
 
     <Button
         android:id="@+id/buttonRegister"
+        style="@style/ButtonSecondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"

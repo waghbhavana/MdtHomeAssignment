@@ -30,6 +30,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
                 is Resource.Success -> {
 
                     viewModel.saveAuthToken(it.value.token)
+                    viewModel.saveUsername(it.value.username)
                     requireActivity().startNewActivity(DashboardActivity::class.java)
                 }
                 is Resource.Failure -> {

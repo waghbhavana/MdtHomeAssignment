@@ -28,5 +28,11 @@ class AuthViewModel(private val repository: AuthRepository) :ViewModel() {
         }
 
     }
+    fun saveUsername(username: String){
+        viewModelScope.launch {
+            repository.saveUsername(username)
+        }
+
+    }
 
 }

@@ -7,5 +7,9 @@
     <string name="login">Login</string>
     <string name="forgot_your_password">Forgot your password?</string>
     <string name="register">Register</string>
-    <string name="already_have_an_account_login_now">Already have an account? <b>Login Now</b></string>
+    <string name="logout" translatable="false">Logout</string>
+    <string name="balance_label">You have</string>
+    <string name="account_no">Account No</string>
+    <string name="account_holder">Account Holder</string>
+    <string name="sgd">"SGD"</string>
 </resources>

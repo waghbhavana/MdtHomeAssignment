@@ -34,8 +34,8 @@ android {
     }
     namespace 'com.example.mdthomeassignment'
     buildFeatures {
-        viewBinding true
         dataBinding true
+        viewBinding true
     }
 }
 
