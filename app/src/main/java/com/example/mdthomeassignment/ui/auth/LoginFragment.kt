@@ -15,6 +15,7 @@ import com.example.mdthomeassignment.data.network.Resource
 import com.example.mdthomeassignment.data.repository.AuthRepository
 import com.example.mdthomeassignment.ui.dashbord.DashboardActivity
 import com.example.mdthomeassignment.util.enable
+import com.example.mdthomeassignment.util.handleApiError
 import com.example.mdthomeassignment.util.startNewActivity
 import kotlinx.coroutines.launch
 
@@ -28,17 +29,17 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         viewModel.loginResponseData.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
+                   lifecycleScope.launch{
+                       viewModel.saveAuthToken(it.value.token)
+                       viewModel.saveUsername(it.value.username)
+                       requireActivity().startNewActivity(DashboardActivity::class.java)
+                   }
 
-                    viewModel.saveAuthToken(it.value.token)
-                    viewModel.saveUsername(it.value.username)
-                    requireActivity().startNewActivity(DashboardActivity::class.java)
                 }
-                is Resource.Failure -> {
-                    //@ToDO handle API failure
-                    Toast.makeText(requireContext(), " API failure", Toast.LENGTH_LONG).show()
-                }
+                is Resource.Failure -> handleApiError(it)
             }
         })
+
         binding.buttonLogin.setOnClickListener {
             val username = binding.editTextUsername.text.toString().trim()
             val password = binding.editTextPassword.text.toString().trim()

@@ -2,10 +2,7 @@ package com.example.mdthomeassignment.data
 
 import android.content.Context
 import androidx.datastore.DataStore
-import androidx.datastore.preferences.Preferences
-import androidx.datastore.preferences.createDataStore
-import androidx.datastore.preferences.edit
-import androidx.datastore.preferences.preferencesKey
+import androidx.datastore.preferences.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -36,6 +33,11 @@ class UserPreferences(context: Context) {
             }
         }
 
+     suspend fun clearDatastore(){
+        dataStore.edit {
+            it.clear()
+        }
+    }
         companion object {
             private val KEY_AUTH = preferencesKey<String>("auth_token")
             private val USERNAME = preferencesKey<String>("username")

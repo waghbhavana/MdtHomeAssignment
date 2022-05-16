@@ -18,4 +18,8 @@ class DashboardViewModel(private val repository: BalanceRepository) : ViewModel(
     fun getBalance()= viewModelScope.launch {
         _balance.value = repository.getBalance()
     }
+
+    suspend fun clearDataStore(){
+        repository.clearDatastore()
+    }
 }
