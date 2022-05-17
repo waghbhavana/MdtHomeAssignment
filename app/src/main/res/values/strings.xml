@@ -12,4 +12,5 @@
     <string name="account_no">Account No</string>
     <string name="account_holder">Account Holder</string>
     <string name="sgd">"SGD"</string>
+    <string name="transaction_history">Your Transaction History</string>
 </resources>

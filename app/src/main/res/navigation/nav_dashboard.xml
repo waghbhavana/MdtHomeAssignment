@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/dashbordFragment"
-        android:name="com.example.mdthomeassignment.ui.dashbord.DashbordFragment"
+        android:name="com.example.mdthomeassignment.ui.dashbord.DashboardFragment"
         android:label="fragment_dashbord"
         tools:layout="@layout/fragment_dashbord" />
 </navigation>

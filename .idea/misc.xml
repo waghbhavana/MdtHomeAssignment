@@ -12,9 +12,11 @@
         <entry key="..\:/Users/Hp/AndroidStudioProjects/MDTHomeAssignment/app/src/main/res/layout/activity_auth.xml" value="0.1" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/MDTHomeAssignment/app/src/main/res/layout/activity_dashboard.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/MDTHomeAssignment/app/src/main/res/layout/activity_main.xml" value="0.16032608695652173" />
-        <entry key="..\:/Users/Hp/AndroidStudioProjects/MDTHomeAssignment/app/src/main/res/layout/fragment_dashbord.xml" value="0.25" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/MDTHomeAssignment/app/src/main/res/layout/fragment_dashbord.xml" value="0.1" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/MDTHomeAssignment/app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="..\:/Users/Hp/AndroidStudioProjects/MDTHomeAssignment/app/src/main/res/layout/fragment_register.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/MDTHomeAssignment/app/src/main/res/layout/list_item.xml" value="0.1" />
+        <entry key="..\:/Users/Hp/AndroidStudioProjects/MDTHomeAssignment/app/src/main/res/layout/nested_list_item.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -17,6 +17,7 @@ import com.example.mdthomeassignment.ui.dashbord.DashboardActivity
 import com.example.mdthomeassignment.util.enable
 import com.example.mdthomeassignment.util.handleApiError
 import com.example.mdthomeassignment.util.startNewActivity
+import com.example.mdthomeassignment.util.visible
 import kotlinx.coroutines.launch
 
 
@@ -26,7 +27,9 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         super.onActivityCreated(savedInstanceState)
 
         binding.buttonLogin.enable(false)
+        binding.progressbar.visible(false)
         viewModel.loginResponseData.observe(viewLifecycleOwner, Observer {
+            binding.progressbar.visible(it is Resource.Loading)
             when (it) {
                 is Resource.Success -> {
                    lifecycleScope.launch{
@@ -35,6 +38,9 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
                        requireActivity().startNewActivity(DashboardActivity::class.java)
                    }
 
+                }
+                is Resource.Loading -> {
+                    binding.progressbar.visible(true)
                 }
                 is Resource.Failure -> handleApiError(it)
             }

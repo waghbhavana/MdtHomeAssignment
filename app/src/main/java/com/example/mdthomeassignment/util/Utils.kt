@@ -3,10 +3,14 @@ package com.example.mdthomeassignment.util
 import android.app.Activity
 import android.content.Intent
 import android.view.View
+import android.widget.Adapter
 import androidx.fragment.app.Fragment
 import com.example.mdthomeassignment.data.network.Resource
 import com.example.mdthomeassignment.ui.auth.LoginFragment
 import com.google.android.material.snackbar.Snackbar
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun <A: Activity> Activity.startNewActivity(activity: Class<A>){
     Intent(this,activity).also{
@@ -19,7 +23,9 @@ fun View.enable(enabled:Boolean){
     isEnabled=enabled
     alpha = if (enabled) 1f else 0.5f
 }
-
+fun View.visible(isVisible: Boolean) {
+    visibility = if (isVisible) View.VISIBLE else View.GONE
+}
 fun Fragment.handleApiError(
     failure: Resource.Failure,
     retry:(()->Unit)?=null){
@@ -49,4 +55,16 @@ fun View.snackbar(message: String, action:(()->Unit)?=null){
         }
     }
     snackbar.show()
+}
+
+fun convertDate(dateString:String):String {
+    val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    val formatterOut = SimpleDateFormat("dd MMM yyyy")
+
+
+        val date: Date = formatter.parse(dateString) as Date
+        println(date)
+        println(formatterOut.format(date))
+        return formatterOut.format(date)
+
 }
