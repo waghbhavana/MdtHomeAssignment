@@ -1,18 +1,18 @@
 package com.example.mdthomeassignment.ui.auth
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import com.example.mdthomeassignment.databinding.FragmentLoginBinding
-import com.example.mdthomeassignment.ui.base.BaseFragment
 import com.example.mdthomeassignment.data.network.AuthApi
 import com.example.mdthomeassignment.data.network.Resource
 import com.example.mdthomeassignment.data.repository.AuthRepository
+import com.example.mdthomeassignment.databinding.FragmentLoginBinding
+import com.example.mdthomeassignment.ui.base.BaseFragment
 import com.example.mdthomeassignment.ui.dashbord.DashboardActivity
 import com.example.mdthomeassignment.util.enable
 import com.example.mdthomeassignment.util.handleApiError
@@ -23,8 +23,9 @@ import kotlinx.coroutines.launch
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
 
         binding.buttonLogin.enable(false)
         binding.progressbar.visible(false)
@@ -58,6 +59,15 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         binding.editTextPassword.addTextChangedListener {
 
             binding.buttonLogin.enable(binding.editTextUsername.text.isNotEmpty() && it.toString().isNotEmpty())
+        }
+        binding.buttonRegister.setOnClickListener {
+
+
+            val fragmentTransaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+            val registerFragment  = RegisterFragment();
+            fragmentTransaction.replace(com.example.mdthomeassignment.R.id.fragmentContainerView, registerFragment)
+                .addToBackStack("tag")
+            fragmentTransaction.commit()
         }
 
     }

@@ -35,7 +35,10 @@ fun Fragment.handleApiError(
             if (this is LoginFragment){
                 requireView().snackbar("You've entered incorrect email address and password")
             }else{
-                //logout
+                val error= failure.errorBody?.string()
+                if (error != null) {
+                    requireView().snackbar(error)
+                }
             }
 
         }else ->{

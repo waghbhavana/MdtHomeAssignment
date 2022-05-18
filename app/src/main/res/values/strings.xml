@@ -13,4 +13,10 @@
     <string name="account_holder">Account Holder</string>
     <string name="sgd">"SGD"</string>
     <string name="transaction_history">Your Transaction History</string>
+    <string name="make_transfer">Make Transfer</string>
+    <string name="transfer">Transfer</string>
+    <string name="payee">Payee</string>
+    <string name="amount">Amount</string>
+    <string name="description">Description</string>
+    <string name="transfer_now">Transfer Now</string>
 </resources>

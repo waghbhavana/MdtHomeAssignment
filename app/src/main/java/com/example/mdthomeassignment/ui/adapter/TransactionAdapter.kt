@@ -45,7 +45,7 @@ class TransactionAdapter:RecyclerView.Adapter<TransactionAdapter.TransactionView
            val transactionChildAdapter=TransactionChildAdapter()
             recyclerView.layoutManager= LinearLayoutManager(context)
             recyclerView.adapter=transactionChildAdapter
-            transactionChildAdapter.setTransactionList(data.toList())
+            transactionChildAdapter.setTransactionList(data.toList(),context)
 
         }
     }

@@ -3,58 +3,60 @@ package com.example.mdthomeassignment.ui.auth
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.inflate
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.mdthomeassignment.R
+import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import com.example.mdthomeassignment.data.network.AuthApi
+import com.example.mdthomeassignment.data.network.Resource
+import com.example.mdthomeassignment.data.repository.AuthRepository
+import com.example.mdthomeassignment.databinding.FragmentRegisterBinding
+import com.example.mdthomeassignment.ui.base.BaseFragment
+import com.example.mdthomeassignment.ui.dashbord.DashboardActivity
+import com.example.mdthomeassignment.util.handleApiError
+import com.example.mdthomeassignment.util.startNewActivity
+import kotlinx.coroutines.launch
+import java.util.zip.Inflater
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class RegisterFragment :
+    BaseFragment<AuthViewModel, FragmentRegisterBinding, AuthRepository>() {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RegisterFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class RegisterFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegisterFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RegisterFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        binding.registerButtonRegister.setOnClickListener {
+            val username = binding.registerEditTextUsername.text.toString().trim()
+            val password = binding.registerEditTextPassword.text.toString().trim()
+            val confirmPassword = binding.registerEditTextConfirmPassword.text.toString().trim()
+            when {
+                username.isEmpty() -> binding.registerEditTextUsername.error = "Enter username"
+                password.isEmpty() -> binding.registerEditTextPassword.error = "Enter Password"
+                confirmPassword.isEmpty() -> binding.registerEditTextConfirmPassword.error = "Enter confirm Password"
+                (password != confirmPassword)-> binding.registerEditTextConfirmPassword.error = "Password and confirm Password are not same"
+                else -> viewModel.register(username, password)
             }
+        }
+        viewModel.registerResponseData.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Resource.Success -> {
+                    lifecycleScope.launch{
+                        viewModel.saveAuthToken(it.value.token)
+                        requireActivity().startNewActivity(DashboardActivity::class.java)
+                    }
+                }
+                is Resource.Failure -> handleApiError(it)
+            }
+        })
     }
+
+
+    override fun getViewModel(): Class<AuthViewModel> = AuthViewModel::class.java
+
+    override fun getFragmentBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentRegisterBinding = FragmentRegisterBinding.inflate(inflater, container, false)
+
+    override fun getFragmentRepository()=AuthRepository(retrofitClient.buildApi(AuthApi::class.java), userPreferences)
+
 }

@@ -14,8 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:padding="@dimen/layout_padding"
         android:text="@string/logout"
+        android:padding="@dimen/widget_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,11 +25,11 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:cardCornerRadius="8dp"
-
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogout">
@@ -37,15 +37,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/widget_margin"
+            android:padding="8dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/balanceLabel"
                 style="@style/TextLabelDefault"
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/widget_margin"
                 android:text="@string/balance_label" />
 
             <TextView
@@ -62,7 +62,7 @@
                 style="@style/TextGray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/widget_margin"
+                android:layout_marginTop="10dp"
                 android:text="@string/account_no" />
 
             <TextView
@@ -77,7 +77,7 @@
                 style="@style/TextGray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/widget_margin"
+                android:layout_marginTop="10dp"
                 android:text="@string/account_holder" />
 
             <TextView
@@ -100,25 +100,41 @@
         android:layout_marginTop="@dimen/widget_margin"
         android:text="@string/transaction_history"
         android:textSize="18sp"
-        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginTop="@dimen/widget_margin"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/transactionHistory">
 
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/transactionHistoryRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/widget_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transactionHistory"
-        app:layout_constraintVertical_bias="0.0"
         />
+    <Button
+        android:id="@+id/buttonMakeTrasnfer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/ButtonPrimary"
+        android:layout_marginBottom="@dimen/widget_margin"
+        android:layout_marginTop="@dimen/widget_margin"
+        android:text="@string/make_transfer"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>
     <ProgressBar
         android:id="@+id/progressbar"
         android:layout_width="wrap_content"

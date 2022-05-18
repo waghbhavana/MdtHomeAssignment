@@ -7,7 +7,9 @@ import com.example.mdthomeassignment.ui.auth.AuthViewModel
 import com.example.mdthomeassignment.data.repository.AuthRepository
 import com.example.mdthomeassignment.data.repository.DashboardRepository
 import com.example.mdthomeassignment.data.repository.BaseRepository
+import com.example.mdthomeassignment.data.repository.TransferRepository
 import com.example.mdthomeassignment.ui.dashbord.DashboardViewModel
+import com.example.mdthomeassignment.ui.transfer.TransferViewModel
 
 class ViewModelFactory(
     private val repository: BaseRepository
@@ -16,8 +18,8 @@ class ViewModelFactory(
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return  when(modelClass){
            AuthViewModel::class.java -> AuthViewModel(repository as AuthRepository) as T
-
             DashboardViewModel::class.java -> DashboardViewModel(repository as DashboardRepository) as T
+            TransferViewModel::class.java -> TransferViewModel(repository as TransferRepository) as T
             else -> {throw IllegalArgumentException("ViewModel not found")}
         }
     }
