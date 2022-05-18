@@ -9,7 +9,7 @@ class TransferRepository(
             transferApi.getPayees()
         }
 
-    suspend fun transfer(receipientAccountNo: String,amount: String,description: String)=safeApiCall {
+    suspend fun transfer(receipientAccountNo: String, amount: Int, description: String)=safeApiCall {
         transferApi.transfer(receipientAccountNo,amount,description)
     }
 }

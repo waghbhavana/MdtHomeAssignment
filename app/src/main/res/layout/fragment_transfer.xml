@@ -4,8 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/layout_padding"
+    android:layout_marginLeft="@dimen/widget_margin"
+    android:layout_marginRight="@dimen/widget_margin"
     tools:context=".ui.transfer.TransferFragment">
+    <Button
+        android:id="@+id/transferBack"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/textViewTransferTitle"
@@ -20,7 +29,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transferBack"
         app:layout_constraintVertical_bias="0.20" />
 
     <TextView
@@ -73,7 +82,7 @@
         android:layout_marginTop="@dimen/widget_margin"
         android:ems="10"
         android:hint="@string/amount"
-        android:inputType="text"
+        android:inputType="number"
         android:padding="@dimen/widget_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -113,6 +122,7 @@
 
     <Button
         android:id="@+id/buttonTransferNow"
+        style="@style/ButtonPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"

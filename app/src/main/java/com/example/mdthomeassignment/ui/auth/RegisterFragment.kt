@@ -3,8 +3,9 @@ package com.example.mdthomeassignment.ui.auth
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.example.mdthomeassignment.data.network.AuthApi
@@ -13,17 +14,17 @@ import com.example.mdthomeassignment.data.repository.AuthRepository
 import com.example.mdthomeassignment.databinding.FragmentRegisterBinding
 import com.example.mdthomeassignment.ui.base.BaseFragment
 import com.example.mdthomeassignment.ui.dashbord.DashboardActivity
+import com.example.mdthomeassignment.util.enable
 import com.example.mdthomeassignment.util.handleApiError
 import com.example.mdthomeassignment.util.startNewActivity
 import kotlinx.coroutines.launch
-import java.util.zip.Inflater
 
 class RegisterFragment :
     BaseFragment<AuthViewModel, FragmentRegisterBinding, AuthRepository>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.registerButtonRegister.enable(false);
         binding.registerButtonRegister.setOnClickListener {
             val username = binding.registerEditTextUsername.text.toString().trim()
             val password = binding.registerEditTextPassword.text.toString().trim()
@@ -47,6 +48,13 @@ class RegisterFragment :
                 is Resource.Failure -> handleApiError(it)
             }
         })
+        binding.registerEditTextConfirmPassword.addTextChangedListener {
+
+            binding.registerButtonRegister.enable(binding.registerEditTextConfirmPassword.text.isNotEmpty() && it.toString().isNotEmpty())
+        }
+        binding.registerBack.setOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 
 
@@ -58,5 +66,6 @@ class RegisterFragment :
     ): FragmentRegisterBinding = FragmentRegisterBinding.inflate(inflater, container, false)
 
     override fun getFragmentRepository()=AuthRepository(retrofitClient.buildApi(AuthApi::class.java), userPreferences)
+
 
 }

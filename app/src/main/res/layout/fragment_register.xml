@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     android:layout_margin="@dimen/layout_padding"
     tools:context=".ui.auth.LoginFragment">
+    <Button
+        android:id="@+id/registerBack"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/textViewRegisterTitle"
@@ -21,8 +29,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.20" />
+        app:layout_constraintTop_toBottomOf="@+id/registerBack"
+        app:layout_constraintVertical_bias="0.19999999" />
 
     <TextView
         android:id="@+id/registerUsernameLabel"
@@ -116,6 +124,7 @@
 
     <Button
         android:id="@+id/registerButtonRegister"
+        style="@style/ButtonPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"

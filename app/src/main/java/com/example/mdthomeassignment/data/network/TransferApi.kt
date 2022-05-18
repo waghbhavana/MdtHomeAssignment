@@ -8,13 +8,13 @@ import retrofit2.http.POST
 interface TransferApi {
 
     @GET("/payees")
-    suspend  fun getPayees(): PayeeResponse
+    suspend fun getPayees(): PayeeResponse
 
     @FormUrlEncoded
     @POST("/transfer")
     suspend  fun transfer(
         @Field("receipientAccountNo") receipientAccountNo: String,
-        @Field("amount") amount: String,
+        @Field("amount") amount: Int,
         @Field("description") description: String
     ): Unit
 }

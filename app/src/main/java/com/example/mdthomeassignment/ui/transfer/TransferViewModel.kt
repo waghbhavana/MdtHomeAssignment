@@ -24,7 +24,7 @@ class TransferViewModel(
         _payees.value =transferRepository.getPayees()
     }
 
-    fun transfer(receipientAccountNo:String,amount: String,description: String)=viewModelScope.launch {
+    fun transfer(receipientAccountNo:String, amount: Int, description: String)=viewModelScope.launch {
         _transfer.value=transferRepository.transfer(receipientAccountNo,amount, description)
     }
 }

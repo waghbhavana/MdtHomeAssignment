@@ -30,17 +30,20 @@
     <style name="TextInputDefault">
         <item name="android:background">@drawable/edittext_background</item>
         <item name="android:textSize">18sp</item>
-        <item name="hintTextColor">@color/purple_700</item>
+        <item name="hintTextColor">@color/purple_500</item>
         <item name="android:textColor">@color/purple_500</item>
         <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
     <style name="TextGray">
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/gray</item>
         <item name="android:fontFamily">@font/roboto_medium</item>
     </style>
     <style name="ButtonPrimary">
         <item name="android:background">@drawable/button_background</item>
+        <item name="height">50dp</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textAppearance">?android:attr/textAppearanceButton</item>
         <item name="android:minHeight">48dip</item>
@@ -54,6 +57,7 @@
 
     <style name="ButtonSecondary">
         <item name="android:background">@drawable/button_border_background</item>
+        <item name="height">50dp</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/purple_500</item>
         <item name="android:textAppearance">?android:attr/textAppearanceButton</item>
